@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityGLTFSerialization;
+using GLTF.Unity;
 
 public class GLTFExporterIntegrationTest : MonoBehaviour {
 	
@@ -16,7 +16,7 @@ public class GLTFExporterIntegrationTest : MonoBehaviour {
 
 
 
-		IntegrationTest.Assert(root.Materials[0].AlphaMode == GLTFSerialization.AlphaMode.BLEND);
+		IntegrationTest.Assert(root.Materials[0].AlphaMode == GLTF.AlphaMode.BLEND);
 
 		IntegrationTest.Pass();
 	}

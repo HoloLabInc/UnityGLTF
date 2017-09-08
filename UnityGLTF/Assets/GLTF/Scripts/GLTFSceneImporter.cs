@@ -1,4 +1,3 @@
-using GLTFSerialization;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,10 +6,11 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Rendering;
-using UnityGLTFSerialization.CacheData;
-using UnityGLTFSerialization.Extensions;
+using GLTF.Serialization;
+using GLTF.Unity.CacheData;
+using GLTF.Unity.Extensions;
 
-namespace UnityGLTFSerialization
+namespace GLTF.Unity
 {
 	public class GLTFSceneImporter
 	{
@@ -34,7 +34,7 @@ namespace UnityGLTFSerialization
 		protected readonly Transform _sceneParent;
 		protected readonly Dictionary<MaterialType, Shader> _shaderCache = new Dictionary<MaterialType, Shader>();
 		public int MaximumLod = 300;
-		protected readonly GLTFSerialization.Material DefaultMaterial = new GLTFSerialization.Material();
+		protected readonly GLTF.Material DefaultMaterial = new GLTF.Material();
 		protected string _gltfUrl;
 		protected string _gltfDirectoryPath;
 		protected Stream _gltfStream;
@@ -130,7 +130,7 @@ namespace UnityGLTFSerialization
 		/// <returns></returns>
 		protected IEnumerator ImportScene(int sceneIndex = -1, bool isMultithreaded = false)
 		{
-			Scene scene;
+			GLTF.Scene scene;
 			if (sceneIndex >= 0 && sceneIndex < _root.Scenes.Count)
 			{
 				scene = _root.Scenes[sceneIndex];
@@ -160,7 +160,7 @@ namespace UnityGLTFSerialization
 					// todo add fuzzing to verify that buffers are before uri
 					for(int i = 0; i < _root.Buffers.Count; ++i)
 					{
-						GLTFSerialization.Buffer buffer = _root.Buffers[i];
+						GLTF.Buffer buffer = _root.Buffers[i];
 						if (buffer.Uri != null)
 						{
 							yield return LoadBuffer(_gltfDirectoryPath, buffer, i);
@@ -205,7 +205,7 @@ namespace UnityGLTFSerialization
 		{
 			for (int i = 0; i < _root.Meshes.Count; ++i)
 			{
-				GLTFSerialization.Mesh mesh = _root.Meshes[i];
+				GLTF.Mesh mesh = _root.Meshes[i];
 				if(_assetCache.MeshCache[i] == null)
 				{
 					_assetCache.MeshCache[i] = new MeshCacheData();
@@ -249,7 +249,7 @@ namespace UnityGLTFSerialization
 			}
 		}
 
-		protected virtual GameObject CreateScene(Scene scene)
+		protected virtual GameObject CreateScene(GLTF.Scene scene)
 		{
 			var sceneObj = new GameObject(scene.Name ?? "GLTFScene");
 
@@ -300,7 +300,7 @@ namespace UnityGLTFSerialization
 			return nodeObj;
 		}
 
-		protected virtual void CreateMeshObject(GLTFSerialization.Mesh mesh, Transform parent, int meshId)
+		protected virtual void CreateMeshObject(GLTF.Mesh mesh, Transform parent, int meshId)
 		{
 			foreach (var primitive in mesh.Primitives)
 			{
@@ -384,7 +384,7 @@ namespace UnityGLTFSerialization
 			return primitiveObj;
 		}
 
-		protected virtual MaterialCacheData CreateMaterial(GLTFSerialization.Material def, int materialIndex)
+		protected virtual MaterialCacheData CreateMaterial(GLTF.Material def, int materialIndex)
 		{
 			MaterialCacheData materialWrapper = null;
 			if (materialIndex < 0 || _assetCache.MaterialCache[materialIndex] == null)
@@ -548,7 +548,7 @@ namespace UnityGLTFSerialization
 			return materialIndex > 0 ? _assetCache.MaterialCache[materialIndex] : materialWrapper;
 		}
 
-		protected virtual UnityEngine.Texture CreateTexture(GLTFSerialization.Texture texture)
+		protected virtual UnityEngine.Texture CreateTexture(GLTF.Texture texture)
 		{
 			if (_assetCache.TextureCache[texture.Source.Id] == null)
 			{
@@ -572,10 +572,10 @@ namespace UnityGLTFSerialization
 
 					switch (sampler.WrapS)
 					{
-						case GLTFSerialization.WrapMode.ClampToEdge:
+						case GLTF.WrapMode.ClampToEdge:
 							desiredWrapMode = UnityEngine.TextureWrapMode.Clamp;
 							break;
-						case GLTFSerialization.WrapMode.Repeat:
+						case GLTF.WrapMode.Repeat:
 						default:
 							desiredWrapMode = UnityEngine.TextureWrapMode.Repeat;
 							break;
@@ -673,7 +673,7 @@ namespace UnityGLTFSerialization
 		/// <summary>
 		/// Load the remote URI data into a byte array.
 		/// </summary>
-		protected virtual IEnumerator LoadBuffer(string sourceUri, GLTFSerialization.Buffer buffer, int bufferIndex)
+		protected virtual IEnumerator LoadBuffer(string sourceUri, GLTF.Buffer buffer, int bufferIndex)
 		{
 			if (buffer.Uri != null)
 			{

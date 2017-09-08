@@ -2,17 +2,16 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using GLTFSerialization;
-using UnityGLTFSerialization.Extensions;
+using GLTF.Unity.Extensions;
 
-namespace UnityGLTFSerialization
+namespace GLTF.Unity
 {
 	public class GLTFSceneExporter
 	{
 		private Transform[] _rootTransforms;
 		private GLTFRoot _root;
 		private BufferId _bufferId;
-		private GLTFSerialization.Buffer _buffer;
+		private GLTF.Buffer _buffer;
 		private BinaryWriter _bufferWriter;
 		private List<Texture2D> _images;
 		private List<UnityEngine.Texture> _textures;
@@ -40,22 +39,22 @@ namespace UnityGLTFSerialization
 				Asset = new Asset {
 					Version = "2.0"
 				},
-				Buffers = new List<GLTFSerialization.Buffer>(),
+				Buffers = new List<GLTF.Buffer>(),
 				BufferViews = new List<BufferView>(),
 				Images = new List<Image>(),
-				Materials = new List<GLTFSerialization.Material>(),
-				Meshes = new List<GLTFSerialization.Mesh>(),
+				Materials = new List<GLTF.Material>(),
+				Meshes = new List<GLTF.Mesh>(),
 				Nodes = new List<Node>(),
 				Samplers = new List<Sampler>(),
-				Scenes = new List<Scene>(),
-				Textures = new List<GLTFSerialization.Texture>(),
+				Scenes = new List<GLTF.Scene>(),
+				Textures = new List<GLTF.Texture>(),
 			};
 
 			_images = new List<Texture2D>();
 			_materials = new List<UnityEngine.Material>();
 			_textures = new List<UnityEngine.Texture>();
 
-			_buffer = new GLTFSerialization.Buffer();
+			_buffer = new GLTF.Buffer();
 			_bufferId = new BufferId {
 				Id = _root.Buffers.Count,
 				Root = _root
@@ -250,7 +249,7 @@ namespace UnityGLTFSerialization
 				return existingMeshId;
 
 			// if not, create new mesh and return its id
-			var mesh = new GLTFSerialization.Mesh();
+			var mesh = new Mesh();
 
 			if (ExportNames)
 			{
@@ -367,7 +366,7 @@ namespace UnityGLTFSerialization
 				return id;
 			}
 
-			var material = new GLTFSerialization.Material();
+			var material = new Material();
 
 			if (ExportNames)
 			{
@@ -584,7 +583,7 @@ namespace UnityGLTFSerialization
 				return id;
 			}
 
-			var texture = new GLTFSerialization.Texture();
+			var texture = new Texture();
 
 			if (ExportNames)
 			{
@@ -645,13 +644,13 @@ namespace UnityGLTFSerialization
 
 			if (texture.wrapMode == TextureWrapMode.Clamp)
 			{
-				sampler.WrapS = GLTFSerialization.WrapMode.ClampToEdge;
-				sampler.WrapT = GLTFSerialization.WrapMode.ClampToEdge;
+				sampler.WrapS = WrapMode.ClampToEdge;
+				sampler.WrapT = WrapMode.ClampToEdge;
 			}
 			else
 			{
-				sampler.WrapS = GLTFSerialization.WrapMode.Repeat;
-				sampler.WrapT = GLTFSerialization.WrapMode.Repeat;
+				sampler.WrapS = WrapMode.Repeat;
+				sampler.WrapT = WrapMode.Repeat;
 			}
 
 			if(texture.filterMode == FilterMode.Point)
@@ -1215,8 +1214,8 @@ namespace UnityGLTFSerialization
 					|| textureObj.filterMode == FilterMode.Bilinear && filterIsLinear
 					|| textureObj.filterMode == FilterMode.Trilinear && root.Samplers[i].MinFilter == MinFilterMode.LinearMipmapLinear;
 
-				bool wrapMatched = textureObj.wrapMode == TextureWrapMode.Clamp && root.Samplers[i].WrapS == GLTFSerialization.WrapMode.ClampToEdge
-					|| textureObj.wrapMode == TextureWrapMode.Repeat && root.Samplers[i].WrapS != GLTFSerialization.WrapMode.ClampToEdge;
+				bool wrapMatched = textureObj.wrapMode == TextureWrapMode.Clamp && root.Samplers[i].WrapS == GLTF.WrapMode.ClampToEdge
+					|| textureObj.wrapMode == TextureWrapMode.Repeat && root.Samplers[i].WrapS != GLTF.WrapMode.ClampToEdge;
 
 				if (filterMatched && wrapMatched)
 				{

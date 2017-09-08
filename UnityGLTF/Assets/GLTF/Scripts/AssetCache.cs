@@ -1,9 +1,9 @@
-﻿using UnityGLTFSerialization.CacheData;
+﻿using GLTF.Unity.CacheData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityGLTFSerialization
+namespace GLTF.Unity
 {
 	/// <summary>
 	/// Caches data in order to construct a unity object
@@ -18,7 +18,7 @@ namespace UnityGLTFSerialization
 		/// <summary>
 		/// Textures to be used for assets. Textures from image cache with samplers applied
 		/// </summary>
-		public Texture[] TextureCache { get; private set; }
+		public UnityEngine.Texture[] TextureCache { get; private set; }
 
 		/// <summary>
 		/// Cache for materials to be applied to the meshes
@@ -47,7 +47,7 @@ namespace UnityGLTFSerialization
 		{
 			// todo: add optimization to set size to be the JSON size
 			ImageCache = new Texture2D[imageCacheSize];
-			TextureCache = new Texture[textureCacheSize];
+			TextureCache = new UnityEngine.Texture[textureCacheSize];
 			MaterialCache = new MaterialCacheData[materialCacheSize];
 			BufferCache = new Dictionary<int, byte[]>(bufferCacheSize);
 			MeshCache = new MeshCacheData[meshCacheSize];

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using GLTFSerialization;
+using GLTF;
 
-namespace UnityGLTFSerialization.Extensions
+namespace GLTF.Unity.Extensions
 {
 	public static class SchemaExtensions
 	{
@@ -29,13 +29,13 @@ namespace UnityGLTFSerialization.Extensions
 		
 		public static void SetUnityTransform(this Node node, Transform transform)
 		{
-			node.Translation = new GLTFSerialization.Math.Vector3(transform.localPosition.x, transform.localPosition.y, -transform.localPosition.z);
-			node.Rotation = new GLTFSerialization.Math.Quaternion(-transform.localRotation.x, -transform.localRotation.y, transform.localRotation.z, transform.localRotation.w);
-			node.Scale = new GLTFSerialization.Math.Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+			node.Translation = new GLTF.Math.Vector3(transform.localPosition.x, transform.localPosition.y, -transform.localPosition.z);
+			node.Rotation = new GLTF.Math.Quaternion(-transform.localRotation.x, -transform.localRotation.y, transform.localRotation.z, transform.localRotation.w);
+			node.Scale = new GLTF.Math.Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
 		}
 
 		// todo: move to utility class
-		public static void GetTRSProperties(GLTFSerialization.Math.Matrix4x4 mat, out Vector3 position, out Quaternion rotation, out Vector3 scale)
+		public static void GetTRSProperties(GLTF.Math.Matrix4x4 mat, out Vector3 position, out Quaternion rotation, out Vector3 scale)
 		{
 			position = mat.GetColumn(3);
 
@@ -64,8 +64,8 @@ namespace UnityGLTFSerialization.Extensions
 					|| textureObj.filterMode == FilterMode.Bilinear && filterIsLinear
 					|| textureObj.filterMode == FilterMode.Trilinear && root.Samplers[i].MinFilter == MinFilterMode.LinearMipmapLinear;
 
-				bool wrapMatched = textureObj.wrapMode == TextureWrapMode.Clamp && root.Samplers[i].WrapS == GLTFSerialization.WrapMode.ClampToEdge
-					|| textureObj.wrapMode == TextureWrapMode.Repeat && root.Samplers[i].WrapS != GLTFSerialization.WrapMode.ClampToEdge;
+				bool wrapMatched = textureObj.wrapMode == TextureWrapMode.Clamp && root.Samplers[i].WrapS == GLTF.WrapMode.ClampToEdge
+					|| textureObj.wrapMode == TextureWrapMode.Repeat && root.Samplers[i].WrapS != GLTF.WrapMode.ClampToEdge;
 
 				if(filterMatched && wrapMatched)
 				{
@@ -99,7 +99,7 @@ namespace UnityGLTFSerialization.Extensions
 		}
 #endif
 
-		public static Vector3 GetColumn(this GLTFSerialization.Math.Matrix4x4 mat, uint columnNum)
+		public static Vector3 GetColumn(this GLTF.Math.Matrix4x4 mat, uint columnNum)
 		{
 			switch(columnNum)
 			{
@@ -124,12 +124,12 @@ namespace UnityGLTFSerialization.Extensions
 			}
 		}
 
-		public static Vector2 ToUnityVector2(this GLTFSerialization.Math.Vector2 vec3)
+		public static Vector2 ToUnityVector2(this GLTF.Math.Vector2 vec3)
 		{
 			return new Vector2(vec3.X, vec3.Y);
 		}
 
-		public static Vector2[] ToUnityVector2(this GLTFSerialization.Math.Vector2[] inVecArr)
+		public static Vector2[] ToUnityVector2(this GLTF.Math.Vector2[] inVecArr)
 		{
 			Vector2[] outVecArr = new Vector2[inVecArr.Length];
 			for (int i = 0; i < inVecArr.Length; ++i)
@@ -139,12 +139,12 @@ namespace UnityGLTFSerialization.Extensions
 			return outVecArr;
 		}
 
-		public static Vector3 ToUnityVector3(this GLTFSerialization.Math.Vector3 vec3)
+		public static Vector3 ToUnityVector3(this GLTF.Math.Vector3 vec3)
 		{
 			return new Vector3(vec3.X, vec3.Y, vec3.Z);
 		}
 
-		public static Vector3[] ToUnityVector3(this GLTFSerialization.Math.Vector3[] inVecArr)
+		public static Vector3[] ToUnityVector3(this GLTF.Math.Vector3[] inVecArr)
 		{
 			Vector3[] outVecArr = new Vector3[inVecArr.Length];
 			for(int i = 0; i < inVecArr.Length; ++i)
@@ -154,12 +154,12 @@ namespace UnityGLTFSerialization.Extensions
 			return outVecArr;
 		}
 
-		public static Vector4 ToUnityVector4(this GLTFSerialization.Math.Vector4 vec4)
+		public static Vector4 ToUnityVector4(this GLTF.Math.Vector4 vec4)
 		{
 			return new Vector4(vec4.X, vec4.Y, vec4.Z, vec4.W);
 		}
 
-		public static Vector4[] ToUnityVector4(this GLTFSerialization.Math.Vector4[] inVecArr)
+		public static Vector4[] ToUnityVector4(this GLTF.Math.Vector4[] inVecArr)
 		{
 			Vector4[] outVecArr = new Vector4[inVecArr.Length];
 			for (int i = 0; i < inVecArr.Length; ++i)
@@ -169,17 +169,17 @@ namespace UnityGLTFSerialization.Extensions
 			return outVecArr;
 		}
 
-		public static UnityEngine.Color ToUnityColor(this GLTFSerialization.Math.Color color)
+		public static UnityEngine.Color ToUnityColor(this GLTF.Math.Color color)
 		{
 			return new UnityEngine.Color(color.R, color.G, color.B, color.A);
 		}
 
-		public static GLTFSerialization.Math.Color ToNumericsColor(this UnityEngine.Color color)
+		public static GLTF.Math.Color ToNumericsColor(this UnityEngine.Color color)
 		{
-			return new GLTFSerialization.Math.Color(color.r, color.g, color.b, color.a);
+			return new GLTF.Math.Color(color.r, color.g, color.b, color.a);
 		}
 
-		public static UnityEngine.Color[] ToUnityColor(this GLTFSerialization.Math.Color[] inColorArr)
+		public static UnityEngine.Color[] ToUnityColor(this GLTF.Math.Color[] inColorArr)
 		{
 			UnityEngine.Color[] outColorArr = new UnityEngine.Color[inColorArr.Length];
 			for (int i = 0; i < inColorArr.Length; ++i)
@@ -189,7 +189,7 @@ namespace UnityGLTFSerialization.Extensions
 			return outColorArr;
 		}
 
-		public static Quaternion ToUnityQuaternion(this GLTFSerialization.Math.Quaternion quaternion)
+		public static Quaternion ToUnityQuaternion(this GLTF.Math.Quaternion quaternion)
 		{
 			return new Quaternion(quaternion.X, quaternion.Y, quaternion.Z, quaternion.W);
 		}

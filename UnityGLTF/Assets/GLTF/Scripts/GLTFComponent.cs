@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
 
-namespace UnityGLTFSerialization {
+namespace GLTF.Unity
+{
 
 	/// <summary>
 	/// Component to load a GLTF scene with

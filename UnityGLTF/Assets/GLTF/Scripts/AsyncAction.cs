@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 
-namespace UnityGLTFSerialization
+namespace GLTF.Unity
 {
 	/// <summary>
 	/// Creates a thread to run multithreaded operations on

@@ -1,6 +1,6 @@
 using System;
 using UnityEditor;
-using UnityGLTFSerialization;
+using GLTF.Unity;
 using UnityEngine.SceneManagement;
 
 public class GLTFExportMenu

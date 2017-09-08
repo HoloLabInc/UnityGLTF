@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GLTFSerialization;
+using GLTF.Serialization;
 
-namespace UnityGLTFSerialization.CacheData
+namespace GLTF.Unity.CacheData
 {
 	public class MeshCacheData
 	{
