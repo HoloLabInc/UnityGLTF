@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace GLTF.Unity.Examples
+namespace UnityGLTF.Examples
 {
 	public class MultiSceneComponent : MonoBehaviour {
 

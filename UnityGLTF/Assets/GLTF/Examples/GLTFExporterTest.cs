@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-namespace GLTF.Unity.Examples
+namespace UnityGLTF.Examples
 {
 	public class GLTFExporterTest : MonoBehaviour {
 

@@ -1,4 +1,4 @@
-﻿namespace GLTF.Unity.CacheData
+﻿namespace UnityGLTF.CacheData
 {
 	public class MaterialCacheData
 	{

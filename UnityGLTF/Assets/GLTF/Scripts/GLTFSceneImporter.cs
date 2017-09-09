@@ -6,11 +6,12 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Rendering;
+using GLTF;
 using GLTF.Serialization;
-using GLTF.Unity.CacheData;
-using GLTF.Unity.Extensions;
+using UnityGLTF.CacheData;
+using UnityGLTF.Extensions;
 
-namespace GLTF.Unity
+namespace UnityGLTF
 {
 	public class GLTFSceneImporter
 	{

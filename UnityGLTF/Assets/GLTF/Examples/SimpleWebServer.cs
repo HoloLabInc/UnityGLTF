@@ -9,7 +9,7 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-namespace GLTF.Unity.Examples
+namespace UnityGLTF.Examples
 {
 	class SimpleHTTPServer {
 		private readonly string[] _indexFiles = {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using GLTF;
 
-namespace GLTF.Unity.Extensions
+namespace UnityGLTF.Extensions
 {
 	public static class SchemaExtensions
 	{

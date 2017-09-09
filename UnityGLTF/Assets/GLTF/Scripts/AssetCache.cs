@@ -1,9 +1,9 @@
-﻿using GLTF.Unity.CacheData;
+﻿using UnityGLTF.CacheData;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GLTF.Unity
+namespace UnityGLTF
 {
 	/// <summary>
 	/// Caches data in order to construct a unity object

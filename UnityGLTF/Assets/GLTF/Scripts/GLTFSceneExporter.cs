@@ -2,9 +2,10 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using GLTF.Unity.Extensions;
+using GLTF;
+using UnityGLTF.Extensions;
 
-namespace GLTF.Unity
+namespace UnityGLTF
 {
 	public class GLTFSceneExporter
 	{
@@ -249,7 +250,7 @@ namespace GLTF.Unity
 				return existingMeshId;
 
 			// if not, create new mesh and return its id
-			var mesh = new Mesh();
+			var mesh = new GLTF.Mesh();
 
 			if (ExportNames)
 			{
@@ -366,7 +367,7 @@ namespace GLTF.Unity
 				return id;
 			}
 
-			var material = new Material();
+			var material = new GLTF.Material();
 
 			if (ExportNames)
 			{
@@ -583,7 +584,7 @@ namespace GLTF.Unity
 				return id;
 			}
 
-			var texture = new Texture();
+			var texture = new GLTF.Texture();
 
 			if (ExportNames)
 			{
@@ -644,13 +645,13 @@ namespace GLTF.Unity
 
 			if (texture.wrapMode == TextureWrapMode.Clamp)
 			{
-				sampler.WrapS = WrapMode.ClampToEdge;
-				sampler.WrapT = WrapMode.ClampToEdge;
+				sampler.WrapS = GLTF.WrapMode.ClampToEdge;
+				sampler.WrapT = GLTF.WrapMode.ClampToEdge;
 			}
 			else
 			{
-				sampler.WrapS = WrapMode.Repeat;
-				sampler.WrapT = WrapMode.Repeat;
+				sampler.WrapS = GLTF.WrapMode.Repeat;
+				sampler.WrapT = GLTF.WrapMode.Repeat;
 			}
 
 			if(texture.filterMode == FilterMode.Point)

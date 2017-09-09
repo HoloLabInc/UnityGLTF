@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using GLTF.Unity;
+using UnityGLTF;
 
 public class GLTFTestComponent : MonoBehaviour {
 	public string Url;

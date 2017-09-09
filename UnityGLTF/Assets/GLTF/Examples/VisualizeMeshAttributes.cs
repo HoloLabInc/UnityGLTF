@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GLTF.Unity.Examples
+namespace UnityGLTF.Examples
 {
 
 	public class VisualizeMeshAttributes : MonoBehaviour {

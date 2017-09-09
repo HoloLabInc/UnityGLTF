@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
 
-namespace GLTF.Unity
+namespace UnityGLTF
 {
 
 	/// <summary>

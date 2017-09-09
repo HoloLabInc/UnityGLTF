@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Threading;
 
-namespace GLTF.Unity
+namespace UnityGLTF
 {
 	/// <summary>
 	/// Creates a thread to run multithreaded operations on
