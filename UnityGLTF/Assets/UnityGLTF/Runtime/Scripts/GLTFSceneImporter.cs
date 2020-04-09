@@ -424,6 +424,7 @@ namespace UnityGLTF
 		/// </summary>
 		private void InitializeGltfTopLevelObject()
 		{
+			/*
 			InstantiatedGLTFObject instantiatedGltfObject = CreatedObject.AddComponent<InstantiatedGLTFObject>();
 			instantiatedGltfObject.CachedData = new RefCountedCacheData
 			(
@@ -432,6 +433,7 @@ namespace UnityGLTF
 				_assetCache.TextureCache,
 				_assetCache.ImageCache
 			);
+			*/
 		}
 
 		private async Task ConstructBufferData(Node node, CancellationToken cancellationToken)
