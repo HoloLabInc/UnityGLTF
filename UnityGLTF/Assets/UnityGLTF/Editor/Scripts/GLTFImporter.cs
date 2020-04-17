@@ -198,7 +198,7 @@ namespace UnityGLTF
                     // TODO: Support for other texture types
                     if (textures.Length > 0)
                     {
-                        var texturesRoot = string.Concat(folderName, "/", "Textures/");
+                        var texturesRoot = string.Concat(folderName, "/", sceneName, "/", "Textures/");
                         Directory.CreateDirectory(texturesRoot);
 
                         foreach (var tex in textures)
@@ -214,7 +214,7 @@ namespace UnityGLTF
                     // Save materials as separate assets and rewrite refs
                     if (materials.Length > 0)
                     {
-                        var materialRoot = string.Concat(folderName, "/", "Materials/");
+                        var materialRoot = string.Concat(folderName, "/", sceneName, "/", "Materials/");
                         Directory.CreateDirectory(materialRoot);
 
                         foreach (var mat in materials)
@@ -247,7 +247,7 @@ namespace UnityGLTF
                                     for (var i = 0; i < textures.Length; ++i)
                                     {
                                         var tex = textures[i];
-                                        var texturesRoot = string.Concat(folderName, "/", "Textures/");
+                                        var texturesRoot = string.Concat(folderName, "/", sceneName, "/", "Textures/");
                                         var ext = _useJpgTextures ? ".jpg" : ".png";
                                         var texPath = string.Concat(texturesRoot, tex.name, ext);
 
