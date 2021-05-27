@@ -1,9 +1,9 @@
 {
-	"name": "org.khronos.unitygltf",
-	"displayName": "Khronos GLTF Loader",
+	"name": "jp.co.hololab.khronos.unitygltf",
+	"displayName": "Khronos GLTF Loader (HoloLab)",
 	"version": "1.0.0",
 	"unity": "2018.3",
-	"description": "Unity3D library for importing and exporting GLTF 2.0 assets. https://github.com/KhronosGroup/UnityGLTF",
+	"description": "Unity3D library for importing and exporting GLTF 2.0 assets. https://github.com/HoloLabInc/UnityGLTF",
 	"keywords": [
 		"gltf",
 		"khronos",
