@@ -4,7 +4,7 @@
     <AssemblyName>GLTFSerialization</AssemblyName>
     <StartupObject />
 
-    <TargetFrameworks>net35;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>net35;netstandard1.3;netstandard2.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(MSBuildRuntimeType)' != 'Mono'">$(TargetFrameworks);uap10.0.10586</TargetFrameworks>
 
     <OutputType>Library</OutputType>
