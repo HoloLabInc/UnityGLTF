@@ -432,6 +432,18 @@ namespace UnityGLTF
 				_assetCache.TextureCache,
 				_assetCache.ImageCache
 			);
+
+			if (_gltfRoot.Extensions.TryGetValue(CESIUM_RTCExtensionFactory.EXTENSION_NAME, out var extension))
+			{
+				if (extension is CESIUM_RTCExtension cesiumRtcExtension)
+				{
+					var cesiumRtcExtensionComponent = CreatedObject.AddComponent<CesiumRtcExtensionComponent>();
+					var center = cesiumRtcExtension.Center;
+					cesiumRtcExtensionComponent.CenterX = center.X;
+					cesiumRtcExtensionComponent.CenterY = center.Y;
+					cesiumRtcExtensionComponent.CenterZ = center.Z;
+				}
+			}
 		}
 
 		private async Task ConstructBufferData(Node node, CancellationToken cancellationToken)
