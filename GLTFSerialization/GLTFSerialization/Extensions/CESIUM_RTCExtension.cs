@@ -8,11 +8,11 @@ namespace GLTF.Schema
 {
 	public class CESIUM_RTCExtension : IExtension
 	{
-		public Vector3 Center = new Vector3(0, 0, 0);
+		public Vector3Double Center = new Vector3Double(0, 0, 0);
 
-		public static readonly Vector3 CENTER_DEFAULT = new Vector3(0, 0, 0);
+		public static readonly Vector3Double CENTER_DEFAULT = new Vector3Double(0, 0, 0);
 
-		public CESIUM_RTCExtension(Vector3 center)
+		public CESIUM_RTCExtension(Vector3Double center)
 		{
 			Center = center;
 		}

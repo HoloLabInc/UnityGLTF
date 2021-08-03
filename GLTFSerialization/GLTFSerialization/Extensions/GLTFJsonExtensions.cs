@@ -295,6 +295,33 @@ namespace GLTF.Extensions
 			return vector;
 		}
 
+		public static Vector3Double DeserializeAsVector3Double(this JToken token)
+		{
+			Vector3Double vector = new Vector3Double();
+
+			if (token != null)
+			{
+				JArray vectorArray = token as JArray;
+				if (vectorArray == null)
+				{
+					throw new Exception("JToken used for Vector3 deserialization was not a JArray. It was a " + token.Type.ToString());
+				}
+				if (vectorArray.Count != 3)
+				{
+					throw new Exception("JArray used for Vector3 deserialization did not have 3 entries for XYZ. It had " + vectorArray.Count);
+				}
+
+				vector = new Vector3Double
+				{
+					X = vectorArray[0].DeserializeAsDouble(),
+					Y = vectorArray[1].DeserializeAsDouble(),
+					Z = vectorArray[2].DeserializeAsDouble()
+				};
+			}
+
+			return vector;
+		}
+
 		public static Quaternion ReadAsQuaternion(this JsonReader reader)
 		{
 			if (reader.Read() && reader.TokenType != JsonToken.StartArray)

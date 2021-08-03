@@ -16,12 +16,12 @@ namespace GLTF.Schema
 
 		public override IExtension Deserialize(GLTFRoot root, JProperty extensionToken)
 		{
-			Vector3 center = new Vector3(CESIUM_RTCExtension.CENTER_DEFAULT);
+			Vector3Double center = new Vector3Double(CESIUM_RTCExtension.CENTER_DEFAULT);
 
 			if (extensionToken != null)
 			{
 				JToken offsetToken = extensionToken.Value[CENTER];
-				center = offsetToken != null ? offsetToken.DeserializeAsVector3() : center;
+				center = offsetToken != null ? offsetToken.DeserializeAsVector3Double() : center;
 			}
 
 			return new CESIUM_RTCExtension(center);
