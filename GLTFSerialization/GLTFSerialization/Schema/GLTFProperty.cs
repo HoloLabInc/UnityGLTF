@@ -12,7 +12,8 @@ namespace GLTF.Schema
 		{
 			{ ExtTextureTransformExtensionFactory.EXTENSION_NAME, new ExtTextureTransformExtensionFactory() },
 			{ KHR_materials_pbrSpecularGlossinessExtensionFactory.EXTENSION_NAME, new KHR_materials_pbrSpecularGlossinessExtensionFactory() },
-      { MSFT_LODExtensionFactory.EXTENSION_NAME, new MSFT_LODExtensionFactory() }
+            { MSFT_LODExtensionFactory.EXTENSION_NAME, new MSFT_LODExtensionFactory() },
+            { CESIUM_RTCExtensionFactory.EXTENSION_NAME, new CESIUM_RTCExtensionFactory() }
 		};
 		private static DefaultExtensionFactory _defaultExtensionFactory = new DefaultExtensionFactory();
 
