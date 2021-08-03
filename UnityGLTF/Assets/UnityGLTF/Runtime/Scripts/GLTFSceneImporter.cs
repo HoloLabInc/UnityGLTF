@@ -878,7 +878,7 @@ namespace UnityGLTF
 			{
 				GLTFHelpers.BuildMeshAttributes(ref attributeAccessors);
 			}
-			catch (GLTFLoadException e)
+			catch (GLTF.GLTFLoadException e)
 			{
 				Debug.LogWarning(e.ToString());
 			}
