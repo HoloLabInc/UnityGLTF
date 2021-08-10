@@ -7,12 +7,15 @@ namespace UnityGLTF
 	public class CesiumRtcExtensionComponent : MonoBehaviour
 	{
 		[SerializeField]
+		[HideInInspector]
 		private double centerX;
 
 		[SerializeField]
+		[HideInInspector]
 		private double centerY;
 
 		[SerializeField]
+		[HideInInspector]
 		private double centerZ;
 
 		public double CenterX
