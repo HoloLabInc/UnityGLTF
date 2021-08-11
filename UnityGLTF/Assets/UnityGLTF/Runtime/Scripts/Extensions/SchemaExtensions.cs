@@ -268,6 +268,10 @@ namespace UnityGLTF.Extensions
 
 		public static void ToUnityVector2Raw(this GLTF.Math.Vector2[] inArr, Vector2[] outArr, int offset = 0)
 		{
+			if (outArr == null)
+			{
+				return;
+			}
 			for (int i = 0; i < inArr.Length; i++)
 			{
 				outArr[offset + i] = inArr[i].ToUnityVector2Raw();
